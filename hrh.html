@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Her</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: radial-gradient(circle at top, #fdf6ee, #f5e6d3);
+    font-family: 'Playfair Display', serif;
+    color: #2e2a27;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Floating lilies */
+.lily-bg {
+    position: fixed;
+    font-size: 22px;
+    opacity: 0.07;
+    animation: float 18s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-120vh);}
+}
+
+/* Sections */
+.section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+/* Glass card */
+.card {
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 40px 30px;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* Title */
+h1 {
+    font-size: 70px;
+    margin: 0;
+    letter-spacing: 3px;
+}
+
+/* Name glow */
+.name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    color: #c8a27c;
+    margin-top: 10px;
+    text-shadow: 0 0 10px rgba(200,162,124,0.5);
+}
+
+/* Lily accent */
+.lily {
+    font-size: 26px;
+    margin: 10px;
+}
+
+/* Button */
+button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: none;
+    background: #c8a27c;
+    color: white;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #a67c52;
+}
+
+/* Poem */
+.poem {
+    font-size: 18px;
+    line-height: 2;
+    margin-top: 20px;
+}
+
+/* Fade */
+.fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1.2s ease;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Final */
+.final {
+    font-size: 34px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.footer {
+    margin-top: 20px;
+    font-style: italic;
+    opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating lilies -->
+<script>
+for(let i=0;i<12;i++){
+    let l = document.createElement("div");
+    l.className = "lily-bg";
+    l.innerHTML = "🌸";
+    l.style.left = Math.random()*100 + "vw";
+    l.style.animationDuration = (15 + Math.random()*10) + "s";
+    document.body.appendChild(l);
+}
+</script>
+
+<!-- INTRO -->
+<div class="section">
+    <div class="card">
+        <div class="lily">🌸</div>
+        <h1>Her</h1>
+        <div class="name">your jaanu</div> <!-- CHANGE THIS -->
+        <p>scroll slowly</p>
+        <button onclick="scrollNext()">begin</button>
+    </div>
+</div>
+
+<!-- POEM -->
+<div class="section fade">
+    <div class="card">
+        <div class="lily">🌸 🌸</div>
+
+        <div class="poem">
+        She isn’t loud like the world I knew,<br>
+        Not chaos, not noise just something true.<br><br>
+
+        A quiet kind of love, so rare, so deep,<br>
+        The kind you don’t find… the kind you keep.<br><br>
+
+        There’s something about the way she shines,<br>
+        Not just in looks, but the smallest signs<br>
+        In how her eyes hold storms and light,<br>
+        How her smile turns wrong to right.<br><br>
+
+        She’s cute yeah, more than she’ll admit,<br>
+        But it’s not even just because of it.<br>
+        It’s the way she rolls her eyes at me,<br>
+        Throws a little attitude so effortlessly.<br><br>
+
+        The way she gets mad, but still stays close,<br>
+        Acts all tough but I know her most.<br>
+        And somehow that fire, that little fight,<br>
+        Makes her even more beautiful in my sight.<br><br>
+
+        She’s not just pretty she’s something rare,<br>
+        A kind of presence you feel everywhere.<br>
+        Not made of perfection, but something true,<br>
+        And somehow… everything good feels like her too.<br><br>
+
+        And I don’t think she’ll ever see<br>
+        Just what her presence does to me<br>
+        How simply having her right here<br>
+        Makes everything else disappear.<br><br>
+
+        If I could give her what she’s worth,<br>
+        I’d hand her more than just this earth.<br>
+        But all I have, all I can do…<br>
+        Is love her, the way she deserves to be loved too.
+        </div>
+
+        <div class="lily">🌸</div>
+    </div>
+</div>
+
+<!-- END -->
+<div class="section fade">
+    <div class="card">
+        <div class="lily">🌸</div>
+        <div class="final">I love you</div>
+        <div class="footer">
+            forever yours ❤️
+        </div>
+    </div>
+</div>
+
+<!-- MUSIC (optional) -->
+<audio autoplay loop>
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/PinkPanther30.wav" type="audio/wav">
+</audio>
+
+<script>
+function scrollNext() {
+    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+}
+
+const faders = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+    faders.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            el.classList.add('show');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
